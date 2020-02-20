@@ -86,7 +86,7 @@ func Parse(text string) (whoisInfo WhoisInfo, err error) {
 		}
 
 		if line[len(line)-1:] == ":" {
-			i += 1
+			i++
 			for ; i < len(whoisLines); i++ {
 				thisLine := strings.TrimSpace(whoisLines[i])
 				if strings.Contains(thisLine, ":") {
@@ -95,7 +95,7 @@ func Parse(text string) (whoisInfo WhoisInfo, err error) {
 				line += thisLine + ","
 			}
 			line = strings.Trim(line, ",")
-			i -= 1
+			i--
 		}
 
 		lines := strings.SplitN(line, ":", 2)

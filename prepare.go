@@ -157,8 +157,11 @@ func prepareEDU(text string) string {
 			if token == "" {
 				result += "\n" + v
 			} else {
+				if index >= len(tokens[token]) {
+					continue
+				}
 				result += fmt.Sprintf("\n%s %s: %s", token[:len(token)-1], tokens[token][index], v)
-				index += 1
+				index++
 			}
 		}
 	}
@@ -363,7 +366,10 @@ func prepareTW(text string) string {
 			if token == "" {
 				result += "\n" + v
 			} else {
-				index += 1
+				index++
+				if index >= len(tokens[token]) {
+					continue
+				}
 				tokenName := token[:len(token)-1]
 				indexName := tokens[token][index]
 				if tokenName == "Contact" {
@@ -767,8 +773,11 @@ func prepareNL(text string) string {
 			if token == "" {
 				result += "\n" + v
 			} else {
+				if index >= len(tokens[token]) {
+					continue
+				}
 				result += fmt.Sprintf("\n%s %s: %s", token[:len(token)-1], tokens[token][index], v)
-				index += 1
+				index++
 			}
 		}
 	}
